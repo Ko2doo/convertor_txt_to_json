@@ -37,9 +37,12 @@ def reading_file_and_create_tuple():
                 # октроем файл для чтения если такой существует
                 source_filepath = open(source_path, "rt", encoding="utf-8")
                 # если файл существует, запишем строки из файла, в кортеж
+                bar = IncrementalBar('Processing', max = len(data))
                 for string in source_filepath:
+                    bar.next()
                     string = string.rstrip()  # убираем последний символ '\n' из s
                     data = data + [string]  # добавляем строку в список
+                bar.finish()
 
                 # проверяем содержимое кортежа и выводим информацию в консоль
                 if len(data) > 0:
