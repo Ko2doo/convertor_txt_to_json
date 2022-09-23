@@ -1,7 +1,6 @@
 import os
 import sys
 import json
-import time
 from progress.bar import IncrementalBar  # отслеживаем прогресс выполнения скрипта
 
 
@@ -13,7 +12,6 @@ def custom_filename(data):
     with open(filename, "w", encoding="utf-8") as json_file:
         for chunk in json.JSONEncoder(ensure_ascii=False, indent=4).iterencode(data):
             bar.next()  # запускаем прогрессбар
-            time.sleep(0.1)  # запускаем задержку программы
             json_file.write(chunk)
         bar.finish()  # завершаем отслеживание прогресса
 
