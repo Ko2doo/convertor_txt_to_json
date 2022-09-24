@@ -4,7 +4,7 @@
 <p>
     Клонируйте репозиторий:
     <code>
-        git clone https://github.com/Ko2doo/kde-beauty.git
+        git clone https://github.com/Ko2doo/convertor_txt_to_json.git
     </code>
 </p>
 
