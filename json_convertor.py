@@ -3,8 +3,7 @@ import sys
 import json
 from progress.bar import IncrementalBar  # отслеживаем прогресс выполнения скрипта
 
-
-def custom_filename(data):
+def json_converter(data):
     filename = str(input("Введите название файла и расширение .json, для конвертации нажмите Enter.\n"))
 
     bar = IncrementalBar('Processing', max = len(data))
@@ -18,7 +17,7 @@ def custom_filename(data):
 
 # Читаем файл
 def reading_file_and_create_tuple():
-    data = []
+    data = list()
 
     while True:
         try:
@@ -37,11 +36,12 @@ def reading_file_and_create_tuple():
                 # октроем файл для чтения если такой существует
                 source_filepath = open(source_path, "rt", encoding="utf-8")
                 # если файл существует, запишем строки из файла, в кортеж
-                bar = IncrementalBar('Processing', max = len(data))
+                bar = IncrementalBar('Writing...', max = len(data))
+
                 for string in source_filepath:
                     bar.next()
-                    string = string.rstrip()  # убираем последний символ '\n' из s
-                    data = data + [string]  # добавляем строку в список
+                    string = string.rstrip().replace("\t", " ")  # убираем последний символ '\n' из string
+                    data.append(string)
                 bar.finish()
 
                 # проверяем содержимое кортежа и выводим информацию в консоль
@@ -49,7 +49,7 @@ def reading_file_and_create_tuple():
                     source_name = source_path
                     print("Содержимое файла", source_name, "успешно записаны в кортеж.\n", "Количество строк в кортеже  - ", len(data))
                     print(":------***------:")
-                    custom_name = custom_filename(data)  # Вызывваем функцию нейминга файла и генератора json
+                    custom_name = json_converter(data)  # Вызывваем функцию нейминга файла и генератора json
                     print(":------***------:")
                 else:
                     print("None")
@@ -63,8 +63,6 @@ def reading_file_and_create_tuple():
 
 
 def input_state():
-    # Hello, @username@
-    message_hello = "Введите имя файла, который необходимо конвертировать из txt в json: "
     # бесконечный цикл, который продолжает выполняться
     # до возникновения исключения
     while True:
