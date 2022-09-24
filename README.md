@@ -14,9 +14,9 @@
 ---
 ###### Сначала установите дополнительные модули из файла *requirements.txt*
 <br>
-`python -m pip install -r requirements.txt`
+<code>python -m pip install -r requirements.txt`</code>
 <br>
-`pip install -r requirements.txt`
+<code>pip install -r requirements.txt</code>
 
 ---
 
@@ -25,6 +25,7 @@
     Если файл находится в той же папки что и скрипт, то просто укажите название файла который нужно конвертировать в <b>.json</b>.
     <br>
     Или указывайте полный путь до файла.
+    <br><br>
     <b>
         Следуйте указаниям программы, не забывайте что выходному файлу нужно указать расширение .json!
     </b>
