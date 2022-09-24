@@ -16,6 +16,8 @@
 <br>
 <code>python -m pip install -r requirements.txt`</code>
 <br>
+<p>Или</p>
+<br>
 <code>pip install -r requirements.txt</code>
 
 ---
