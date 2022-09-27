@@ -33,27 +33,29 @@ def reading_file_and_create_array():
                     print("Размер: ", os.path.getsize(source_path) // 1024, "Кб")
                     print(":------***------:")
 
-                # октроем файл для чтения если такой существует
-                reading_file = open(source_path, "rt", encoding="utf-8")
-                # если файл существует, запишем строки из файла, в кортеж
-                bar = IncrementalBar('Writing...', max = len(data))
+                    # октроем файл для чтения если такой существует
+                    reading_file = open(source_path, "rt", encoding="utf-8")
+                    # если файл существует, запишем строки из файла, в кортеж
+                    bar = IncrementalBar('Writing...', max = len(data))
 
-                for string in reading_file:
-                    bar.next()
-                    string = string.rstrip().replace("\t", " ")  # убираем последний символ '\n' из string
-                    data.append(string)
-                bar.finish()
+                    for string in reading_file:
+                        bar.next()
+                        string = string.rstrip().replace("\t", " ")  # убираем последний символ '\n' из string
+                        data.append(string)
+                    bar.finish()
 
-                # проверяем содержимое кортежа и выводим информацию в консоль
-                if len(data) > 0:
-                    source_name = source_path
-                    print("Содержимое файла", source_name, "успешно записаны в массив.\n", "Количество строк в массиве  - ", len(data))
-                    print(":------***------:")
-                    starting_converter = json_converter(data)  # Вызывваем функцию нейминга файла и генератора json
-                    print(":------***------:")
+                    # проверяем содержимое кортежа и выводим информацию в консоль
+                    if len(data) > 0:
+                        source_name = source_path
+                        print("Содержимое файла", source_name, "успешно записаны в массив.\n", "Количество строк в массиве  - ", len(data))
+                        print(":------***------:")
+                        starting_converter = json_converter(data)  # Вызывваем функцию нейминга файла и генератора json
+                        print(":------***------:")
+                    else:
+                        print("None")
+                    sys.exit()
                 else:
-                    print("None")
-                sys.exit()
+                    print("Такого файла не существует")
             else:
                 print("Неправильный путь, повторите попытку снова")
         except OSError as e:
@@ -85,3 +87,6 @@ def main():
             break
 
 main()
+
+
+
